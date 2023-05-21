@@ -5,7 +5,7 @@
 - base url : `https://<cloudrun_service_name>.a.run.app/`
 - base image url : `https://storage.googleapis.com/<bucket_name>/`
 
-### Places
+### Place
 
 - Path : `/Place`
 - Method : `GET`
