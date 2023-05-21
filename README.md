@@ -1,6 +1,6 @@
 # Api Documentation
 
-## Place Endpoint
+## Places Endpoint
 
 - base url : `https://<cloudrun_service_name>.a.run.app/`
 - base image url : `https://storage.googleapis.com/<bucket_name>/`
