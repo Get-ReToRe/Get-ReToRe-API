@@ -17,7 +17,7 @@ const mysql = require('mysql');
 // Database Connection for Development
 
 const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
+    //host: process.env.DB_HOST,
     user: process.env.DB_USER,
     database: process.env.DB_DATABASE,
     password: process.env.DB_PASS
