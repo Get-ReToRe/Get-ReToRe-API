@@ -12,6 +12,7 @@ const authenticateUser = async (req, res, next) => {
     return res.status(400).json({
       error:'unauthenticated please provide the token in header'
     })
+    return;
   }
 
   const token = authHeader.split(' ')[1]
