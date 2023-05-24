@@ -4,7 +4,12 @@ const app = express();
 
 // router
 const helloRouter = require('./routes/helloRoute');
+const recommendation = require('./routes/recommendationRoute');
+
+app.use(express.json());
+
 app.use(helloRouter);
+app.use(recommendation);
 
 const placeRoute = require("./routes/placeRoute")
 app.use("/places",placeRoute);
