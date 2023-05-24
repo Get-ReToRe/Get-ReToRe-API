@@ -1,15 +1,14 @@
 const express = require('express');
 
-const server = express();
+const app = express();
 
-server.get('/hello', (req, res) => {
-  res.json({
-    "hello" : "world",
-  })
-})
+// router
+const helloRouter = require('./routes/helloRoute');
 
+
+app.use(helloRouter);
 
 const port = process.env.PORT || 5000;
-server.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server is listening port ${port}...`)
 })
