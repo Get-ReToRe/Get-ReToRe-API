@@ -9,7 +9,7 @@ const authenticateUser = async (req, res, next) => {
   const authHeader = req.headers.authorization
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    res.json({
+    return res.status(400).json({
       error:'unauthenticated please provide the token in header'
     })
   }
