@@ -1,8 +1,20 @@
 # Api Documentation
 
-## Places Endpoint
-
 - base url : `https://getretore-api-ukc47aryda-et.a.run.app`
+
+### Place
+
+- Path : `/hello`
+- Method : `GET`
+- Required:
+
+  - Query Params:
+
+    | Header | Value |
+    | ------ | -----------| 
+    | authorization | `Bearer <token>` | 
+- Response :
+
 
 ### Place
 
