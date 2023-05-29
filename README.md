@@ -2,19 +2,24 @@
 
 - base url : `https://getretore-api-ukc47aryda-et.a.run.app`
 
-### Place
+### Hello
 
 - Path : `/hello`
 - Method : `GET`
 - Required:
 
-  - Query Params:
+  - Header:
 
     | Header | Value |
     | ------ | -----------| 
     | authorization | `Bearer <token>` | 
+    
 - Response :
-
+    ```json
+      {
+        "error": "unauthenticated please provide the token in header"
+      }
+    ```
 
 ### Place
 
