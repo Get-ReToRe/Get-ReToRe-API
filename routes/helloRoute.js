@@ -8,7 +8,7 @@ const authenticateUser = require('../middleware/authenticate');
 const { sayHello, sayHelloName } = require('../controllers/helloController');
 
 router.route('/hello').get(authenticateUser,sayHello);
-router.route('/hello/:name').get(sayHelloName);
+router.route('/hello/:name').get(authenticateUser,sayHelloName);
 
 module.exports = router;
 

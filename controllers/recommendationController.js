@@ -1,3 +1,9 @@
+let dummy = require('./dummy');
+dummy = dummy.map( (place) => {
+  place = {...place, Image:"https://storage.googleapis.com/tourism-image-bucket/picture.png"};
+  return place
+})
+
 const getRecommendation = (req, res) => {
   const { budget } = req.body;
 
@@ -11,26 +17,9 @@ const getRecommendation = (req, res) => {
   res.status(200).json({
     success : true,
 		message : "berhasil mendapatkan rekomendasi",
-		data : [
-		   {
-          place_id: 1,
-          name: 'Malboro1',
-          price: 1000,
-          image_url: 'ppp'
-       },
-		   {
-          place_id: 2,
-          name: 'Malboro2',
-          price: 2000,
-          image_url: 'ppp'
-      },
-      {
-          place_id: 3,
-          name: 'Malboro3',
-          price: 3000,
-          image_url: 'ppp'
-      },
-		]
+		data : dummy.map( (place) => {
+      if(place.Price < budget)return place;
+    })
   })
 }
 
