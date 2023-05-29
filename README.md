@@ -8,6 +8,13 @@
 
 - Path : `/places`
 - Method : `GET`
+- Optional:
+
+  - Query Params:
+
+    | Query | Value | description |
+    | ------ | ------ | ---------- |
+    | search | string | return list that name containing given param |
 - Response :
 
    ```json
