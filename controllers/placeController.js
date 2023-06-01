@@ -6,27 +6,25 @@ dummy = dummy.map( (place) => {
 // console.log(dummy);
 
 const placeList = (req, res) => {
-    const {search} = req.query;
-    let data =[]
+    const {search, limit} = req.query;
+    let data = dummy;
+    let message = "Place list returned";
     if(search) {
-        dummy.forEach( (place) => {
-            if(place.Place_Name.toLowerCase().includes(search.toLowerCase())){
-                data.push(place);
-            }
+        data = data.filter((place) => {
+            return place.Place_Name.toLowerCase().includes(search.toLowerCase());
         })
-        let message = data.length > 0 ? `Place list containing ${search} returned` : "no result";
+        message += `, query search = ${search}`
+    }
 
-        return res.status(200).json({
-            success: true,
-            message: message,
-            data,
-        })
+    if(limit) {
+        data = data.slice(0,limit)
+        message += `, limit = ${limit}`
     }
 
     return res.status(200).json({
         success: true,
-        message: "Place list returned",
-        data: dummy
+        message: message,
+        data: data
     })
 
 }
