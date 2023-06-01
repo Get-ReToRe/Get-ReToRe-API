@@ -31,6 +31,7 @@
 
     | Query | Value | description |
     | ------ | ------ | ---------- |
+    | limit | int | limit rlist return |
     | search | string | return list that name containing given param |
 - Response :
 
