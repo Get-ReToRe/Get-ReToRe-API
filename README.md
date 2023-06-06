@@ -1,6 +1,6 @@
 # Api Documentation
 
-- base url : `https://getretore-api-ukc47aryda-et.a.run.app`
+- base url : `https://test---getretore-api-ukc47aryda-et.a.run.app/`
 
 ### Hello
 
@@ -36,10 +36,7 @@
 - Response :
 
    ```json
-      {
-        "success": false,
-        "message": "Places fetched successfully",
-        "data": [
+       [
           {
               "Place_Id": 0,
               "Place_Name": "Place_Name",
@@ -68,9 +65,7 @@
               "Long": 0,
               "Image": "https://storage.googleapis.com/tourism-image-bucket/picture.png"
           }
-
         ]
-      }
    ```
 
 ### Place Detail
@@ -80,10 +75,8 @@
 - Response :
 
    ```json
-      {
-        "success": false,
-        "message": "place fetched successfully",
-        "data": {
+      [
+       {
             "Place_Id": 0,
             "Place_Name": "Place_Name",
             "Description": "Description",
@@ -97,7 +90,7 @@
             "Long": 0,
             "Image": "https://storage.googleapis.com/tourism-image-bucket/picture.png"
         }
-      }
+      ]
    ```
 
 ### Recommendation
@@ -115,10 +108,7 @@
 - Response :
 
     ```json
-    {
-      "success": true,
-      "message": "recommendation fetched successfully",
-      "data": [
+    [
         {
             "Place_Id": 0,
             "Place_Name": "Place_Name",
@@ -149,7 +139,7 @@
         }
 
       ]
-    }
+    
     ```
 
 
