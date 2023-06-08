@@ -1,8 +1,4 @@
 let dummy = require('./dummy');
-dummy = dummy.map( (place) => {
-    place = {...place, Image:"https://storage.googleapis.com/tourism-image-bucket/picture.png"};
-    return place
-})
 // console.log(dummy);
 
 const placeList = (req, res) => {
@@ -21,21 +17,13 @@ const placeList = (req, res) => {
         message += `, limit = ${limit}`
     }
 
-    return res.status(200).json({
-        success: true,
-        message: message,
-        data: data
-    })
+    return res.status(200).send(data)
 
 }
 
 const placeFromId = (req, res) => {
     const {id} = req.params;
-    return res.status(200).json({
-        success: true,
-        message: "Place list returned",
-        data: dummy[id]
-    })
+    return res.status(200).send([dummy[id]])
 }
 
 module.exports = {
