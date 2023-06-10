@@ -8,6 +8,7 @@ const placeList = (req, res) => {
     if(search) {
         data = data.filter((place) => {
             return place.Place_Name.toLowerCase().includes(search.toLowerCase());
+           
         })
         message += `, query search = ${search}`
     }
