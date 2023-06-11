@@ -21,7 +21,7 @@ module.exports = {
 
     
   
-    res.send(dummy[id-1])
+    res.send([dummy[id-1]])
   }
 
 
