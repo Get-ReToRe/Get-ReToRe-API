@@ -97,11 +97,21 @@
 
 - Path : `/recommendation`
 - Method : `POST`
+- Optional:
+  - Optional Body:
 
+    | body  | description |
+    | ------ | ---------------- |
+    | city | Bandung,Jakarta,Yogyakarta,Semarang, or Surabaya |
+    | category | Budaya,Taman Hiburan,Tempat Ibadah,Cagar Alam,Bahari or Pusat Perbelanjaan |
 - Request Body:
     ```json
       {
-        "budget":9000
+          "budget": 100000,
+          "category": "Budaya",
+          "city": "Yogyakarta",
+          "lat": -7.7829,
+          "lon": 110.3671
       }
     ```
 
@@ -110,33 +120,23 @@
     ```json
     [
         {
-            "Place_Id": 0,
-            "Place_Name": "Place_Name",
-            "Description": "Description",
-            "Category": "Category",
-            "City": "City",
-            "Price": 0,
-            "Rating": 0,
-            "Time_Minutes": 0,
-            "Coordinate": "Coordinate",
-            "Lat": 0,
-            "Long": 0,
-            "Image": "https://storage.googleapis.com/tourism-image-bucket/picture.png"
+            "Place_Id": 115,
+            "Place_Name": "Monumen Sanapati",
+            "City": "Yogyakarta",
+            "Category": "Budaya",
+            "Price": 15000,
+            "Distance": 0.76,
+            "Image": "https://storage.googleapis.com/getretore_assets/images/115_Monumen_Sanapati.JPEG"
         },
         {
-            "Place_Id": 0,
-            "Place_Name": "Place_Name",
-            "Description": "Description",
-            "Category": "Category",
-            "City": "City",
+            "Place_Id": 147,
+            "Place_Name": "Bentara Budaya Yogyakarta (BBY)",
+            "City": "Yogyakarta",
+            "Category": "Budaya",
             "Price": 0,
-            "Rating": 0,
-            "Time_Minutes": 0,
-            "Coordinate": "Coordinate",
-            "Lat": 0,
-            "Long": 0,
-            "Image": "https://storage.googleapis.com/tourism-image-bucket/picture.png"
-        }
+            "Distance": 0.89,
+            "Image": "https://storage.googleapis.com/getretore_assets/images/147_Bentara_Budaya_Yogyakarta_(BBY).JPEG?ITOK=WFFCHPM1"
+        },
 
       ]
     
