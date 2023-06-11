@@ -142,4 +142,88 @@
     
     ```
 
+### Package
+
+- Path : `/package`
+- Method : `GET`
+- Optional:
+
+  - Query Params:
+
+    | Query | Value | description |
+    | ------ | ------ | ---------- |
+    | city | string | return list that city equal to param |
+    
+- Response :
+
+   ```json
+       [
+          {
+              "Package": 81,
+              "City": "Surabaya",
+              "Place_Tourism1": "Taman Prestasi",
+              "Place_Tourism2": "Taman Keputran",
+              "Place_Tourism3": "Taman Bungkul",
+              "Place_Tourism4": "Taman Flora Bratang Surabaya",
+              "Place_Tourism5": ""
+          },
+          {
+              "Package": 82,
+              "City": "Surabaya",
+              "Place_Tourism1": "Museum Sepuluh Nopember Kota Surabaya",
+              "Place_Tourism2": "Museum Kesehatan Dr. Adhyatma",
+              "Place_Tourism3": "Patung Buddha Empat Rupa",
+              "Place_Tourism4": "Museum TNI AL Loka Jala Crana",
+              "Place_Tourism5": "Keraton Surabaya"
+          },
+          {
+              "Package": 83,
+              "City": "Surabaya",
+              "Place_Tourism1": "Masjid Muhammad Cheng Hoo",
+              "Place_Tourism2": "Masjid Nasional Al-Akbar",
+              "Place_Tourism3": "Klenteng Sanggar Agung",
+              "Place_Tourism4": "Patung Buddha Empat Rupa",
+              "Place_Tourism5": "Gereja Perawan Maria Tak Berdosa Surabaya"
+          },
+          {
+              "Package": 84,
+              "City": "Surabaya",
+              "Place_Tourism1": "Ciputra Waterpark",
+              "Place_Tourism2": "Kenjeran Park",
+              "Place_Tourism3": "Kebun Binatang Surabaya",
+              "Place_Tourism4": "Atlantis Land Surabaya",
+              "Place_Tourism5": ""
+          },
+          {
+              "Package": 85,
+              "City": "Surabaya",
+              "Place_Tourism1": "Air Mancur Menari",
+              "Place_Tourism2": "Monumen Kapal Selam",
+              "Place_Tourism3": "Pantai Ria Kenjeran",
+              "Place_Tourism4": "",
+              "Place_Tourism5": ""
+          },
+      ]
+   ```
+   
+### Package By ID
+
+- Path : `/package/{id}`
+- Method : `GET`
+- Response :
+
+   ```json
+       [
+          {
+              "Package": 81,
+              "City": "Surabaya",
+              "Place_Tourism1": "Taman Prestasi",
+              "Place_Tourism2": "Taman Keputran",
+              "Place_Tourism3": "Taman Bungkul",
+              "Place_Tourism4": "Taman Flora Bratang Surabaya",
+              "Place_Tourism5": ""
+          },
+          
+      ]
+   ```
 
