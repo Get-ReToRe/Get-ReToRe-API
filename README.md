@@ -141,6 +141,42 @@
       ]
     
     ```
+### Predict
+- Path : `/predict`
+- Method : `POST`
+- Required:
+  - Header:
+
+    | Header | Value |
+    | ------ | -----------| 
+    | Content-Type | multipart/form-data | 
+    
+- Request Body:
+  - photo as file, must be a valid image file
+
+- Response :
+
+    ```json
+      [
+          {
+              "Place_Id": 3,
+              "Place_Name": "Dunia Fantasi",
+              "Category": "Taman Hiburan",
+              "City": "Jakarta",
+              "Price": 270000
+          },
+          {
+              "Place_Id": 4,
+              "Place_Name": "Taman Mini Indonesia Indah (TMII)",
+              "Category": "Taman Hiburan",
+              "City": "Jakarta",
+              "Price": 10000
+          },
+
+      ]
+    
+    ```
+
 
 ### Package
 
