@@ -163,14 +163,16 @@
               "Place_Name": "Dunia Fantasi",
               "Category": "Taman Hiburan",
               "City": "Jakarta",
-              "Price": 270000
+              "Price": 270000,
+              "Image": "https://storage.googleapis.com/getretore_assets/images/3_Dunia_Fantasi.JPEG"
           },
           {
               "Place_Id": 4,
               "Place_Name": "Taman Mini Indonesia Indah (TMII)",
               "Category": "Taman Hiburan",
               "City": "Jakarta",
-              "Price": 10000
+              "Price": 10000,
+              "Image": "https://storage.googleapis.com/getretore_assets/images/3_Dunia_Fantasi.JPEG"
           },
 
       ]
