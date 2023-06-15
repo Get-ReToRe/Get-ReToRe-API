@@ -10,4 +10,5 @@ const { placeList, placeFromId } = require('../controllers/placeController');
 router.route('/').get(placeList);
 router.route('/:id').get(placeFromId);
 
+
 module.exports = router;
