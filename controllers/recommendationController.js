@@ -1,7 +1,8 @@
 const axios = require('axios');
+const connection = require('./database');
 
 const listedCity = ['Bandung', 'Jakarta', 'Yogyakarta', 'Semarang', 'Surabaya']
-const listedCategory = ['Budaya', 'Taman Hiburan', 'Tempat Ibadah', 'Cagar Alam', 'Bahari', 'Pusat Perbelanjaan']
+const listedCategory = ['Bahari', 'Budaya', 'Cagar Alam', 'Pusat Perbelanjaan',  'Taman Hiburan', 'Tempat Ibadah']
 
 const getRecommendation = (req, res) => {
   const { budget, lat, lon, city, category } = req.body;
@@ -59,6 +60,47 @@ const getRecommendation = (req, res) => {
   
 }
 
+const getPrediction = async (req, res) => {
+  try {
+    const imageFile = req.file;
+    // Convert the Buffer to a Blob
+    const blobData = new Blob([imageFile.buffer], { type: imageFile.mimetype });
+    const formData = new FormData();
+    formData.append('file', blobData, imageFile.originalname);
+    const predictionResponse = await axios.post('https://model-api-ukc47aryda-et.a.run.app/predict', formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+    const predictionResult = listedCategory[predictionResponse.data.result];
+
+    console.log(predictionResult);
+
+    connection.query('SELECT * FROM tourism', function (error, results, fields){
+      if(error){
+          return res.send(error);
+      }
+      let data = results;
+      data = data.filter((place)=>{
+        return place.Category == predictionResult
+      })
+      res.send(data.map( (place) => {
+        return {
+          "Place_Id": place.Place_Id,
+          "Place_Name": place.Place_Name,
+          "Category": place.Category,
+          "City": place.City,
+          "Price": place.Price,
+          "Image": place.Image
+        }
+      }))
+    })
+  } catch (error) {
+    res.status(500).send({ error: 'Failed to process prediction', detail: error.message });
+  }
+}
+
 module.exports = {
-  getRecommendation
+  getRecommendation,
+  getPrediction
 }

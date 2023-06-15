@@ -1,27 +1,35 @@
-const dummy = require('./paketdummy');
+const connection = require('./database');
 
 module.exports = {
   getAllPackage : (req, res) => {
     const city = req.query.city
-    let data = dummy;
-    if(city){
-      data  = data.filter( (package) => {
-        return package.City.toLowerCase().includes(city.toLowerCase())
-      })
-    }
-    res.send(data)
+    connection.query('SELECT * FROM tourism', function (error, results, fields){
+      if(error){
+        return res.send(error);
+      }
+      let data = results;
+      // return res.status(200).send([results[id-1]])
+      if(city){
+        data  = data.filter( (package) => {
+          return package.City.toLowerCase().includes(city.toLowerCase())
+        })
+      }
+      res.send(data)
+    })
   },
 
   getPackageById : (req,res) => {
     const id = req.params.id
-
-    if(id<=0 || id>dummy.length){
-      return res.send({success: false, message: `package with id ${id} not found`})
-    }
-
-    
-  
-    res.send([dummy[id-1]])
+    connection.query('SELECT * FROM tourism', function (error, results, fields){
+      if(error){
+          return res.send(error);
+      }
+      let data = results;
+      if(id<=0 || id>data.length){
+        return res.send({success: false, message: `package with id ${id} not found`})
+      }
+      res.send([data[id-1]])
+    })
   }
 
 
