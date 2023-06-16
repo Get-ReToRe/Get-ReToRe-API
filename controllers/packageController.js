@@ -3,7 +3,7 @@ const connection = require('./database');
 module.exports = {
   getAllPackage : (req, res) => {
     const city = req.query.city
-    connection.query('SELECT * FROM tourism', function (error, results, fields){
+    connection.query('SELECT * FROM package_tourism', function (error, results, fields){
       if(error){
         return res.send(error);
       }
@@ -20,7 +20,7 @@ module.exports = {
 
   getPackageById : (req,res) => {
     const id = req.params.id
-    connection.query('SELECT * FROM tourism', function (error, results, fields){
+    connection.query('SELECT * FROM package_tourism', function (error, results, fields){
       if(error){
           return res.send(error);
       }
