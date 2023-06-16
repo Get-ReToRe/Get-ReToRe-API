@@ -1,0 +1,483 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Get ReToRe API",
+    "description": "This documentation  explain the flow of Get ReToRe available APIs.\n\nProject GitHub repo: [https://github.com/Get-ReToRe/Get-ReToRe-API](https://github.com/Get-ReToRe/Get-ReToRe-API)\n",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://getretore-api-ukc47aryda-et.a.run.app/"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Place": {
+        "type": "object",
+        "properties": {
+          "Place_Id": {
+            "type": "integer",
+            "example": 10
+          },
+          "Place_Name": {
+            "type": "string",
+            "example": "Monumen Nasional"
+          },
+          "Description": {
+            "type": "string",
+            "example": "Place description"
+          },
+          "Category": {
+            "type": "string",
+            "example": "Bahari"
+          },
+          "City": {
+            "type": "string",
+            "example": "Jakarta"
+          },
+          "Price": {
+            "type": "integer",
+            "example": 20000
+          },
+          "Rating": {
+            "type": "number",
+            "example": 4.6
+          },
+          "Time_Minutes": {
+            "type": "integer",
+            "example": 15
+          },
+          "Coordinate": {
+            "type": "string",
+            "example": "{'lat': -6.1753924, 'lng': 106.8271528}"
+          },
+          "Lat": {
+            "type": "number",
+            "example": -6.175
+          },
+          "Long": {
+            "type": "number",
+            "example": 106.827
+          },
+          "Image": {
+            "type": "string",
+            "example": "https://storage.googleapis.com/getretore_assets/images/1_Monumen_Nasional.JPEG"
+          }
+        }
+      },
+      "Package": {
+        "type": "object",
+        "properties": {
+          "Package": {
+            "type": "integer",
+            "example": "1,"
+          },
+          "City": {
+            "type": "string",
+            "example": "Jakarta"
+          },
+          "Place_Tourism1": {
+            "type": "string",
+            "example": "Pasar Tanah Abang"
+          },
+          "Place_Tourism2": {
+            "type": "string",
+            "example": "Taman Ayodya"
+          },
+          "Place_Tourism3": {
+            "type": "string",
+            "example": "Museum Tekstil"
+          },
+          "Place_Tourism4": {
+            "type": "string",
+            "example": ""
+          },
+          "Place_Tourism5": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "BudgetRecommendation": {
+        "type": "object",
+        "properties": {
+          "Place_Id": {
+            "type": "integer",
+            "example": 10
+          },
+          "Place_Name": {
+            "type": "string",
+            "example": "Monumen Nasional"
+          },
+          "City": {
+            "type": "string",
+            "example": "Jakarta"
+          },
+          "Category": {
+            "type": "string",
+            "example": "Bahari"
+          },
+          "Price": {
+            "type": "integer",
+            "example": 20000
+          },
+          "Distance": {
+            "type": "number",
+            "example": 295.11
+          },
+          "Image": {
+            "type": "string",
+            "example": "https://storage.googleapis.com/getretore_assets/images/1_Monumen_Nasional.JPEG"
+          }
+        }
+      },
+      "PredictRecommendation": {
+        "type": "object",
+        "properties": {
+          "Place_Id": {
+            "type": "integer",
+            "example": 10
+          },
+          "Place_Name": {
+            "type": "string",
+            "example": "Monumen Nasional"
+          },
+          "City": {
+            "type": "string",
+            "example": "Jakarta"
+          },
+          "Category": {
+            "type": "string",
+            "example": "Bahari"
+          },
+          "Price": {
+            "type": "integer",
+            "example": 20000
+          },
+          "Image": {
+            "type": "string",
+            "example": "https://storage.googleapis.com/getretore_assets/images/1_Monumen_Nasional.JPEG"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "description": "get the Id Token using firebase client \n\n read documentation :  [Get ID Token from Client](https://firebase.google.com/docs/auth/admin/verify-id-tokens?hl=id#android)",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Places",
+      "description": "places"
+    },
+    {
+      "name": "Package",
+      "description": "package"
+    },
+    {
+      "name": "Recommendation",
+      "description": "recommendation"
+    }
+  ],
+  "paths": {
+    "/hello": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "hello world"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "unauthenticated please provide the token in header"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/places": {
+      "get": {
+        "tags": [
+          "Places"
+        ],
+        "summary": "Get All Places",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "limit the returned places",
+            "schema": {
+              "type": "integer"
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "search",
+            "description": "return list that name containing given query",
+            "schema": {
+              "type": "string"
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Place"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/places/{placeId}": {
+      "get": {
+        "tags": [
+          "Places"
+        ],
+        "summary": "Get places by id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "placeId",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Numeric ID of the user to get"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Place"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/package": {
+      "get": {
+        "tags": [
+          "Package"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "city",
+            "description": "get package by city",
+            "schema": {
+              "type": "string"
+            },
+            "required": false
+          }
+        ],
+        "summary": "get package",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Package"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/package/{packageId}": {
+      "get": {
+        "tags": [
+          "Package"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "packageId",
+            "description": "get package detail by id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "summary": "get package",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Package"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recommendation": {
+      "post": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "get 5 recommendation based on budget",
+        "description": "category : Budaya,Cagar Alam,Pusat Perbelanjaan,Taman Hiburan,Tempat Ibadah, Bahari. \n\n city : Bandung, Jakarta, Yogyakarta, Semarang, Surabaya",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "budget": {
+                    "type": "number",
+                    "example": 1000
+                  },
+                  "category": {
+                    "type": "string",
+                    "example": "Cagar Alam",
+                    "enum": [
+                      "easd"
+                    ]
+                  },
+                  "city": {
+                    "type": "number",
+                    "example": "Bandung"
+                  },
+                  "lat": {
+                    "type": "number",
+                    "example": -7.7829
+                  },
+                  "lon": {
+                    "type": "number",
+                    "example": 110.3671
+                  }
+                },
+                "required": [
+                  "budget",
+                  "lat",
+                  "lon"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BudgetRecommendation"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/predict": {
+      "post": {
+        "tags": [
+          "Recommendation"
+        ],
+        "summary": "get recommendation based on image",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PredictRecommendation"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
