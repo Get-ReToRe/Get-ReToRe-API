@@ -9,6 +9,7 @@ const placeRoute = require("./routes/placeRoute")
 const packageRoute = require('./routes/packageRoute')
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(helloRouter);
 app.use(recommendation);
