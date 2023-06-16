@@ -1,6 +1,6 @@
 # Api Documentation
 
-- base url : `https://test---getretore-api-ukc47aryda-et.a.run.app/`
+- base url : `https://getretore-api-ukc47aryda-et.a.run.app/`
 
 ### Hello
 
